@@ -5,13 +5,13 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">
 		</script>
-		<script src ="app.js"></script>
-		<script src="index_controller.js"></script>
+		<script src ="app/app.module.js"></script>
+		<script src="app/components/index_controller.js"></script>
 	</head>
 	<body ng-controller="IndexController">
 		{{name}}
 		<div class="btn btn-info">Hello World</div>
-
+		<input type="text" ng-model="name"/>
 	
 	<!---Jquery and Bootstrap CDN Links---->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
