@@ -227,27 +227,39 @@
           </h3>
 
           <button class="btn btn-primary btn-sm daterange" data-toggle="tooltip" title="Date range" style="margin: 5px;"><i class="fa fa-calendar"></i></button>
-          <div>
+     
           </div>
-          <div class="box-body no-padding">
-            <div class="table-responsive">
-              <!-- .table - Uses sparkline charts-->
-              <table class="table table-striped">
-                <tr>
-                  <th>Name</th>
-                  <th>kWh</th>
-                  <th>kWh<br/>Sq. Ft.</th>
-                  <th>Cost</th>
-                  <th>Cost<br/>Sq. Ft.</th>
-                </tr>
-               
-              </table><!-- /.table -->
-            </div>
-          </div><!-- /.box-body-->
+
+        <div class="box-body no-padding">
+					<div class="table-responsive">
+    			<!-- .table - Uses sparkline charts-->
+				    <table class="table table-striped">
+				  <tr>
+						<th>Name</th>
+						<th>kWh</th>
+						<th>kWh<br/>Sq. Ft.</th>
+						<th>Cost</th>
+						<th>Cost<br/>Sq. Ft.</th>
+				  </tr>
+				  
+				  <tr ng-repeat="site in sites">
+				  	<td><a href="site_snapshots_index.html">{{site.name}}</a></td>
+				  	<td>{{site.kwh}}</td>
+				  	<td>{{site.kwhSqft}}</td>
+				  	<td>{{site.cost}}</td>
+				  	<td>{{site.costSqft}}</td>
+				  </tr>
+				  
+				   
+				</table><!-- /.table -->
+
+         		</div>
+         </div>
+     
           <div class="box-footer">
             <!--<button class="btn btn-info"><i class="fa fa-download"></i> Export Data</button>-->
           </div>
-        </div>
+        
 
       </div><!-- /.box -->
 
@@ -269,8 +281,10 @@
         </div>
         <!-- box-body -->
         <div class="box-body row-fluid">
-          <div id="usage_pie" style="height: 300px;">
-          </div>
+           <div google-chart chart="pie_chart" id="usage_pie" style="height: 300px;"/> </div>
+          
+         
+          
         </div><!-- /.box-body-->
       </div>
       </section><!-- right col -->
