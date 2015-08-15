@@ -49,6 +49,39 @@ angular.module('enos.controllers')
 	   // Pie Chart 
 
 	   var pie_chart = {};
+	     pie_chart.type = "PieChart";
+    pie_chart.data = [
+       ['Component', 'cost'],
+       ['Software', 50000],
+       ['Hardware', 80000]
+      ];
+    pie_chart.data.push(['Services',20000]);
+    pie_chart.options = {
+        displayExactValues: true,
+        width: 900,
+        height: 400,
+        chartArea: {left:10,top:10,bottom:0,height:"100%"}
+    };
+
+    pie_chart.formatters = {
+      number : [{
+        columnNum: 1,
+        pattern: "$ #,##0.00"
+      }]
+    };
+
+    $scope.pie_chart = pie_chart;
+
+    
+
+    //Table
+
+   $scope.sites = [
+   	{id: 1, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
+    {id: 2, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
+    {id: 3, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" }
+   ];
+
 
     }]);
 
