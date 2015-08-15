@@ -20,7 +20,6 @@
 	
 
 	<nav class="navbar navbar-inverse" role="navigation">
-  <input type="hidden" id="group_id">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -89,25 +88,20 @@
       <div class="box-body col-lg-6">
 
         <label>View by Group</label>
-        <select class="form-control" id="changeGroup">
-          <% @groups.each do|group| %>
-          <% if params['group_id'].to_i == group['id'] %>
-          <option value="<%= group['id'] %>" selected="selected"><%= group['dis']%></option> 
-          <% else %>
-          <option value="<%= group['id'] %>"><%= group['dis']%></option> 
-          <% end %>
-          <% end %>
+        
+        <select class="form-control" id="changeGroup" 
+        ng-options="item.id as item.label for item in groups track by item.id" 
+        ng-model="selectedGroup"  ng-change="groupSelect()"
+        bs-select  placement="bottom" >
         </select>
+
       </div>
       <div class="box-body col-lg-6">
         <label>View by Usage</label>
-        <select class="form-control">
-          <option>All</option>
-          <option>HVAC</option>
-          <option>Lighting</option>
-          <option>Refrigeration</option>
-          <option>Always On</option>
-          <option>Others</option>
+        <select class="form-control" id="changeusage" 
+        ng-options="item.id as item.label for item in usages track by item.id" 
+        ng-model="selectedUsage" ng-change="usageSelect()" 
+        bs-select  placement="bottom">
         </select>
       </div>
       </section>
@@ -137,9 +131,9 @@
         </div>
         <!-- box-body -->
         <div class="box-body no-padding row-fluid">
+        <div google-chart chart="gauage"/> </div>
 
-
-
+        <!---
           <div class="span12  homeWidgetsPadding" style="margin-left:0">
             <div class="span12 bottomBorder grayBorder spanContent">
 
@@ -160,7 +154,7 @@
               </div>
             </div>
           </div>
-
+     -->
 
 
         </div><!-- /.box-body-->
