@@ -1,0 +1,260 @@
+<html>
+ <head>
+    <title>Energy DashBoard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/stylesheets/AdminLTE.css"></link>
+    <link rel="stylesheet" href="assets/stylesheets/custom.css"></link>
+    <link rel="stylesheet" href="assets/stylesheets/iCheck/all.css"></link>
+    <link rel="stylesheet" href="assets/stylesheets/font-awesome.min.css"></link>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">
+    </script>
+    <script src ="app/app.module.js"></script>
+    <script src="app/components/index_controller.js"></script>
+    <script src="app/components/pie_chart_service.js"></script>
+  </head>
+<body>
+<input type="hidden" name="date" id="current_date">
+<input type="hidden" name="site_ref" id="site_ref">
+<input type="hidden" name="channel" id="channel">
+<input type="hidden" name="channel_name" id="channel_name">
+<input type="hidden" id="prev_next" name="prev_next" value="0">
+<input type="hidden" id="usage_tab" name="usage_tab" value="day">
+				    
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+ <aside class="right-side strech">
+           <!-- Content Header (Page header) -->
+                <section class="content-header">
+                   <h1>
+                        <small></small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li><a href="/home/index">Site</a></li>
+			                  <li class="active"><a href="/site_snapshots/index?site_ref="></a></li>
+                        <li class="active"></li>
+                    </ol>
+                </section>
+</aside>
+<aside class="left-side sidebar-offcanvas" style="min-height:725px;top: 186px;width: 200px;">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+
+            <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side" style="margin-left: 180px;">
+                
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-6 connectedSortable">
+  			  <!--box -->
+                            <div class="box box-warning sortable">
+                                <div class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+     <div class="box-tools pull-right">
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa fa-refresh"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa  ion-stats-bars"></i>
+                                    <div id="snap-box-icon" class="snapshot-box-icon"></div>
+                                    <h3 class="box-title">
+                                        Usage
+                                    </h3>
+                            
+</div>
+			<!-- box-body -->
+                            <div class="box-body no-padding row-fluid">
+<div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">Day</a></li>
+                                    <li><a href="#tab_2" data-toggle="tab">Week</a></li>
+				    <li><a href="#tab_3" data-toggle="tab">Month</a></li>
+				    <li class="pull-right"><a href="#" class="prev_date"><i class="fa fa-chevron-right"></i></a></li>
+            <li class="pull-right"><a href="#" id="display_date_lable"></a></li>
+ 				    <li class="pull-right"><a href="#" class="next_date"><i class="fa fa-chevron-left"></i></a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                       <button id="clearSelection1" class="btn btn-primary btn-tn refresh-btn pull-right" style="z-index:10;position:relative">
+<i class="fa fa-refresh"></i> Rest Zoom</button>
+                                       <div id="line-chart1" style="height: 300px;"></div>
+                                    </div><!-- /.tab-pane -->
+                                    <div class="tab-pane active" id="tab_2">
+                                       <div id="line-chart2" style="height: 300px;"></div>
+                                    </div><!-- /.tab-pane -->
+                                    <div class="tab-pane active" id="tab_3">
+                                       <div id="line-chart3" style="height: 300px;"></div>
+                                    </div><!-- /.tab-pane -->                                    
+                                </div><!-- /.tab-content -->
+                            </div>                       
+
+
+                                </div><!-- /.box-body-->
+                             </div>
+                            <!-- /.box -->
+
+ 			  <!--box -->
+                            <div class="box box-warning sortable">
+                                <div class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+     <div class="box-tools pull-right">
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa fa-refresh"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa fa-usd"></i>
+                                    <div id="snap-box-icon" class="snapshot-box-icon"></div>
+                                    <h3 class="box-title">
+                                       Projected Costs vs Previous Period
+                                    </h3>
+                            
+</div>
+
+			<!-- box-body -->
+                            <div class="box-body no-padding row-fluid">
+<div style="margin:30px 50px 30px 40px">
+<div id="cost-chart" style="height: 100px;"></div>
+<div>
+
+                                </div><!-- /.box-body-->
+                             </div>
+                            <!-- /.box -->
+
+                        </section>
+                        
+                        
+                        <section class="col-lg-6 connectedSortable"> 
+  			  <!--box -->
+                            <div class="box box-warning sortable">
+                                <div class="box-header" style="cursor: move;">
+                                    <!-- tools box -->
+     <div class="box-tools pull-right">
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa fa-refresh"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa  fa-dashboard"></i>
+                                    <div id="snap-box-icon" class="snapshot-box-icon"></div>
+                                    <h3 class="box-title">
+                                        Demand
+                                    </h3>
+                            
+</div>
+			<!-- box-body -->
+                            <div class="box-body no-padding row-fluid">
+
+<div class="span12  homeWidgetsPadding" style="margin-left:0">
+ <div class="span12 bottomBorder grayBorder spanContent">
+
+  <div class="col-lg-6">
+    <p class="smallBold" style="text-align:center">Usage Now</p>
+    <canvas id="g1" style="width:100%;">guage</canvas>
+    
+    <p class="mediumBold"  id="gauge1_val"  style="text-align:center;"> watts</p>
+    <p class="tinyBold" style="text-align:center;" id="breaker_capacity">% Breaker Capacity</p>
+  </div>
+
+  <div class="col-lg-6">
+  <p class="smallBold" style="text-align:center">Past 30 Days</p>
+  <canvas id="g2" style="width:100%;">guage</canvas>
+    <p class="mediumBold" id="gauge2_val" style="text-align:center;"></p>
+    <p class="tinyBold" style="text-align:center;">Cost: $56</p>
+    <p class="tinyBold" style="text-align:center;">CO2: 4.5Kg</p>
+
+  </div>
+</div>
+</div>
+
+                                </div><!-- /.box-body-->
+                                <div class="box-footer">
+                                    <p class="span10 snapShotFooter red" style="margin-left:5px"><i class="fa fa-arrow-up"></i> 26W ABOVE YESTERDAY</p>
+                                </div> 
+                             </div>
+                            <!-- /.box -->
+
+
+
+
+<div class="box box-warning sortable">
+                                <div class="box-header" style="cursor: move;">
+                                  <!-- tools box -->
+                                    <div class="pull-right box-tools">                                        
+                                        <button class="btn btn-default btn-tn refresh-btn" data-toggle="tooltip" title="" data-original-title="Reload"><i class="fa fa-refresh"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-default btn-tn" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+
+                                    <i class="fa ion-ios7-timer"></i>
+                                    <h3 class="box-title">
+                                        Runtime Information
+                                    </h3>
+                                </div>
+			<!-- box-body -->
+                            <div class="box-body no-padding row-fluid">
+                               
+
+
+<div class="span12  homeWidgetsPadding" style="margin-left:0">
+ <div class="span12 bottomBorder grayBorder spanContent">
+
+<div class="span12 spanContent" style="margin: 0 20px 0 30px;">
+<div class="row">
+<p class="span6">Runtime Last 24 Hours</p>
+<p class="span6"></p>
+</div>
+<div class="row">
+<p class="span6">Runtime Last 7 Days</p>
+<p class="span6"></p>
+</div>
+<div class="row">
+<p class="span6">Total Runtime since 2012-09-26</p>
+<p class="span6">1,680 hours averaging 3.0 hours per day</p>
+</div>
+<div class="row">
+<p class="span6">Degree days since 2012-09-26</p>
+Adjust Base Temperature
+<p class="span6">10,291 (cooling), 1,071 (heating)</p>
+</div>
+<div class="row">
+<p class="span6">kWh per degree day since 2012-09-26</p>
+<p class="span6">1 (cooling), 9 (heating)</p>
+</div>
+</div>
+
+
+ </div>
+</div>
+
+
+                                </div><!-- /.box-body-->
+                            </div>
+                            <!-- /.box -->     
+
+                        </section>
+
+
+                    </div><!-- /.row (main row) -->
+
+
+
+
+                </section><!-- /.content -->
+            </aside><!-- /.right-side -->
+        </div><!-- ./wrapper -->
+</body>
+</html>
+
