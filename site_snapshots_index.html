@@ -1,5 +1,6 @@
+<!DOCTYPE html>
 <html lang="en" ng-app="enos">
-  <head>
+	<head>
     <title>Energy DashBoard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/stylesheets/AdminLTE.css"></link>
@@ -9,16 +10,21 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">
     </script>
     <script src ="app/app.module.js"></script>
-    <script src="app/components/index_controller.js"></script>
-    <script src="app/components/pie_chart_service.js"></script>
+    <script src="app/components/site_snapshot_controller.js"></script>
+    <script src="app/components/footer_directive.js"></script>
+
   </head>
-  <body>
-      <div class="wrapper row-offcanvas row-offcanvas-left">
+
+
+	<body>
+	
+	  <div class="wrapper row-offcanvas row-offcanvas-left" ng-controller="SiteSnapshotController">
+	  
       <!-- Right side column. Contains the navbar and content of the page -->
         <aside class="right-side strech">
         <!-- Content Header (Page header) -->
           <section class="content-header">
-            <h1>Some title
+            <h1> 
               <small>Snapshot</small>
             </h1>
             <ol class="breadcrumb">
@@ -46,7 +52,7 @@
                   <i class="fa  fa-dashboard"></i>
                   <div id="snap-box-icon" class="snapshot-box-icon"></div>
                     <h3 class="box-title">
-                      Site Demand
+                      Site Demand 
                     </h3>
                   </div>
                   <!-- box-body -->
@@ -428,8 +434,11 @@
       </div>
       </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
-  </script>
-</body>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	</script>
+	<script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js">
+	</script>
+	</body>
 </html>
