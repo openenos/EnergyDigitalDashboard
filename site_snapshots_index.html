@@ -12,6 +12,8 @@
     <script src ="app/app.module.js"></script>
     <script src="app/components/site_snapshot_controller.js"></script>
     <script src="app/components/footer_directive.js"></script>
+    <script src="http://bouil.github.io/angular-google-chart/ng-google-chart.js">
+	</script>
 
   </head>
 
@@ -60,18 +62,15 @@
                     <div class="span12  homeWidgetsPadding" style="margin-left:0">
                       <div class="span12 bottomBorder grayBorder spanContent">
                         <div class="col-lg-4">
-                          <canvas id="g1" style="width:100%">guage</canvas>
-                          <p class="mediumBold" style="text-align:center" id="avg_power_gauge"></p>
+                          <div google-chart chart="demand_gauge_chart"/></div>
                           <p class="tinyBold" style="text-align:center">Demand Now</p>
                         </div>
                         <div class="col-lg-4">
-                          <canvas id="g2" style="width:100%">guage</canvas>
-                          <p class="mediumBold" style="text-align:center" id="max_power_gauge"></p>
+                          <div google-chart chart="max_today_gauge_chart"/></div>
                           <p class="tinyBold" style="text-align:center">Max Today</p>
                         </div>
                         <div class="col-lg-4">
-                          <canvas id="g3" style="width:100%">guage</canvas>
-                          <p class="mediumBold" style="text-align:center" id="total_power_gauge"></p>
+                          <div google-chart chart="soFarTodayGaugeChart"/></div>
                           <p class="tinyBold" style="text-align:center">So far today</p>
                         </div>
                       </div>
@@ -105,13 +104,11 @@
                       <div class="span12 bottomBorder grayBorder spanContent">
 
                         <div class="col-lg-4">
-                          <canvas id="g4" style="width:100%">guage</canvas>
-                          <p class="mediumBold" style="text-align:center" id="currentValue"></p>
+                          <div google-chart chart="chartObject"/></div>
                           <p class="tinyBold" style="text-align:center">Now</p>
                         </div>
                           <div class="col-lg-4">
-                          <canvas id="g5" style="width:100%">guage</canvas>
-                          <p class="mediumBold" style="text-align:center" id="soFarTodayValue"></p>
+                          <div google-chart chart="chartObject"/></div>
                           <p class="tinyBold" style="text-align:center">So far today</p>
                         </div>
                     </div>
@@ -134,14 +131,14 @@
       <i class="fa ion-ios7-pulse-strong"></i>
       <div id="snap-box-icon" class="snapshot-box-icon"></div>
       <h3 class="box-title">
-
+           30 days generated 
 
       </h3>
 
       </div>
       <!-- box-body -->
       <div class="box-body row-fluid">
-      <div id="interactive" style="height: 300px;"></div>
+      <div google-chart chart="pie_chart"/></div>
       </div><!-- /.box-body-->
       </div>
       <!-- /.box -->
@@ -161,14 +158,13 @@
       <i class="fa fa-adjust"></i>
       <div id="snap-box-icon" class="snapshot-box-icon"></div>
       <h3 class="box-title">
-
+        30 days generated 
       </h3>
 
       </div>
       <!-- box-body -->
       <div class="box-body row-fluid">
-      <div id="usage_pie" style="height: 300px;">
-      </div>
+        <div google-chart chart="pie_chart"/></div>
       <a href='#'class="btn btn-primary btn-lg" id="model_pie" data-toggle="modal" data-target="#myModal">All Channels</a>
       </div><!-- /.box-body-->
       </div>

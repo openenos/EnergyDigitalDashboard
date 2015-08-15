@@ -83,7 +83,7 @@ angular.module('enos.controllers')
    ];
 
 
-    }]);
+   }]);
 
 
  
