@@ -26,7 +26,7 @@ angular.module('enos.controllers')
 		}
 
 
-$scope.getPieChart();
+		$scope.getPieChart();
 		
 
 
@@ -79,8 +79,8 @@ $scope.getPieChart();
     pie_chart.data = data;
     pie_chart.options = {
         displayExactValues: true,
-        width: 900,
-        height: 400,
+        width: 800,
+        height: 300,
         chartArea: {left:10,top:10,bottom:0,height:"100%"}
     };
 
@@ -142,13 +142,21 @@ $scope.getPieChart();
 
     //Table
 
-   $scope.sites = [
-   	{id: 1, name: "AMI Outfitters Sears Cottage1",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
-    {id: 2, name: "AMI Outfitters Sears Cottage2",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
-    {id: 3, name: "AMI Outfitters Sears Cottage3",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" }
-   ];
+   $scope.data_tables = function(){
+		//	var url = "http://192.168.199.108:3000/api/get_last_month_data_by_load_type";
+			$http.get("http://192.168.199.108:3000/api/get_last_month_data")
+			.success(function(response){
+				//console.log(response.data);
+			
+			var data = response.data;
+			$scope.sites = data;
+			console.log(data);
+			}).error(function(){
+        alert("error");
+    });
+		}
 
-
+   $scope.data_tables();
     }]);
 
 
