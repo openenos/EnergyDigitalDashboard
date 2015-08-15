@@ -72,14 +72,57 @@ angular.module('enos.controllers')
 
     $scope.pie_chart = pie_chart;
 
-    
+    //Line Chart
+
+     var linechart = {};
+    linechart.type = "LineChart";
+    linechart.cssStyle = "height:200px; width:300px;";
+    linechart.data = {"cols": [
+        {id: "month", label: "Month", type: "string"},
+        {id: "server-id", label: "Server", type: "number"},
+        {id: "cost-id", label: "Shipping", type: "number"}
+    ], "rows": [
+        {c: [
+            {v: "January"},
+            {v: 12, f: "Ony 12 items"},
+            {v: 4}
+        ]},
+        {c: [
+            {v: "February"},
+            {v: 13},
+            {v: 2}
+        ]},
+        {c: [
+            {v: "March"},
+            {v: 24},
+            {v: 6}
+
+        ]}
+    ]};
+
+    linechart.options = {
+        "title": "Sales per month",
+        "isStacked": "true",
+        "fill": 20,
+        "displayExactValues": true,
+        "vAxis": {
+            "title": "Sales unit", "gridlines": {"count": 6}
+        },
+        "hAxis": {
+            "title": "Date"
+        }
+    };
+
+    linechart.formatters = {};
+
+    $scope.linechart = linechart;
 
     //Table
 
    $scope.sites = [
-   	{id: 1, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
-    {id: 2, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
-    {id: 3, name: "AMI Outfitters Sears Cottage",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" }
+   	{id: 1, name: "AMI Outfitters Sears Cottage1",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
+    {id: 2, name: "AMI Outfitters Sears Cottage2",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" },
+    {id: 3, name: "AMI Outfitters Sears Cottage3",kwh: "158.87", kwhSqft: "100", cost: "100", costSqft: "90" }
    ];
 
 
