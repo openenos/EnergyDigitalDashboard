@@ -1,8 +1,8 @@
 angular.module('enos.controllers')
-	.controller('IndexController', ['$scope', '$window', function ($scope, $window) {
+	.controller('IndexController', ['$scope', '$window', '$http', function ($scope, $window, $http){
 		
 		$scope.name = "balaraju"
-              
+         
 		$scope.selectedGroup = "1";
 		$scope.groups = [{id: '1', label: "First"}, {id: '2', label: "second"}, {id:'3', label: "Third"}];
 		
@@ -11,8 +11,27 @@ angular.module('enos.controllers')
 		{id: 2, label: "Lighting"}, {id: 3, label: "Refrigeration"}, 
 		{id: 4, label: "Always On"}, {id: 5, label: "Others"}];
 
+		$scope.getPieChart = function(){
+		//	var url = "http://192.168.199.108:3000/api/get_last_month_data_by_load_type";
+			$http.get("http://192.168.199.108:3000/api/get_last_month_data_by_load_type")
+			.success(function(response){
+				//console.log(response.data);
+			
+			var data = response.data;
+			drawPieChart(data);
+			console.log(data);
+			}).error(function(){
+        alert("error");
+    });
+		}
+
+
+$scope.getPieChart();
 		
+
+
 		$scope.groupSelect = function(){
+			$scope.getPieChart();
 			$window.alert($scope.selectedGroup);
 		};
 
@@ -48,14 +67,16 @@ angular.module('enos.controllers')
 
 	   // Pie Chart 
 
+
+			//$scope.data = [];
+				
+							
+		
+	   function drawPieChart (data){
+		console.log(data);
 	   var pie_chart = {};
-	     pie_chart.type = "PieChart";
-    pie_chart.data = [
-       ['Component', 'cost'],
-       ['Software', 50000],
-       ['Hardware', 80000]
-      ];
-    pie_chart.data.push(['Services',20000]);
+	   pie_chart.type = "PieChart";
+    pie_chart.data = data;
     pie_chart.options = {
         displayExactValues: true,
         width: 900,
@@ -71,7 +92,9 @@ angular.module('enos.controllers')
     };
 
     $scope.pie_chart = pie_chart;
+}
 
+  //  $window.alert($scope.pieChartdetails);
     //Line Chart
 
      var linechart = {};
