@@ -1,2 +1,2 @@
-angular.module('enos', ['enos.controllers']);
+angular.module('enos', ['enos.controllers', 'googlechart']);
 angular.module('enos.controllers', []);
