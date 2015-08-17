@@ -8,42 +8,14 @@
     <link rel="stylesheet" href="assets/stylesheets/font-awesome.min.css"></link>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js">
     </script>
+    <script src="assets/libs/ng-google-chart.js">
+	</script>
     <script src ="app/app.module.js"></script>
-    <script src="app/components/index_controller.js"></script>
-    <script src="app/components/pie_chart_service.js"></script>
+    <script src="app/components/site_circuit_controller.js"></script>
   </head>
-<body>
-<input type="hidden" name="date" id="current_date">
-<input type="hidden" name="site_ref" id="site_ref">
-<input type="hidden" name="channel" id="channel">
-<input type="hidden" name="channel_name" id="channel_name">
-<input type="hidden" id="prev_next" name="prev_next" value="0">
-<input type="hidden" id="usage_tab" name="usage_tab" value="day">
-				    
-        <div class="wrapper row-offcanvas row-offcanvas-left">
- <aside class="right-side strech">
-           <!-- Content Header (Page header) -->
-                <section class="content-header">
-                   <h1>
-                        <small></small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="/home/index">Site</a></li>
-			                  <li class="active"><a href="/site_snapshots/index?site_ref="></a></li>
-                        <li class="active"></li>
-                    </ol>
-                </section>
-</aside>
-<aside class="left-side sidebar-offcanvas" style="min-height:725px;top: 186px;width: 200px;">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
+  <body>
+    <div class="wrapper row-offcanvas row-offcanvas-left">
 
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
 
 
             <!-- Right side column. Contains the navbar and content of the page -->
@@ -89,7 +61,7 @@
                                     <div class="tab-pane active" id="tab_1">
                                        <button id="clearSelection1" class="btn btn-primary btn-tn refresh-btn pull-right" style="z-index:10;position:relative">
 <i class="fa fa-refresh"></i> Rest Zoom</button>
-                                       <div id="line-chart1" style="height: 300px;"></div>
+                                      <div google-chart chart="linechart" id="line-chart" style="height: 300px;"/> </div>
                                     </div><!-- /.tab-pane -->
                                     <div class="tab-pane active" id="tab_2">
                                        <div id="line-chart2" style="height: 300px;"></div>
@@ -161,8 +133,7 @@
  <div class="span12 bottomBorder grayBorder spanContent">
 
   <div class="col-lg-6">
-    <p class="smallBold" style="text-align:center">Usage Now</p>
-    <canvas id="g1" style="width:100%;">guage</canvas>
+    <div google-chart chart="gauage"/> </div>
     
     <p class="mediumBold"  id="gauge1_val"  style="text-align:center;"> watts</p>
     <p class="tinyBold" style="text-align:center;" id="breaker_capacity">% Breaker Capacity</p>
@@ -255,6 +226,11 @@ Adjust Base Temperature
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-</body>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+	</script>
+	
+  </body>
 </html>
 
