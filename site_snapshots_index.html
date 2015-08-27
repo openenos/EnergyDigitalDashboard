@@ -104,11 +104,11 @@
                       <div class="span12 bottomBorder grayBorder spanContent">
 
                         <div class="col-lg-4">
-                          <div google-chart chart="chartObject"/></div>
+                          <div google-chart chart="linechart"/></div>
                           <p class="tinyBold" style="text-align:center">Now</p>
                         </div>
                           <div class="col-lg-4">
-                          <div google-chart chart="chartObject"/></div>
+                          <div google-chart chart="linechart"/></div>
                           <p class="tinyBold" style="text-align:center">So far today</p>
                         </div>
                     </div>
@@ -158,13 +158,11 @@
       <i class="fa fa-adjust"></i>
       <div id="snap-box-icon" class="snapshot-box-icon"></div>
       <h3 class="box-title">
-        30 days generated 
       </h3>
 
       </div>
       <!-- box-body -->
       <div class="box-body row-fluid">
-        <div google-chart chart="pie_chart"/></div>
       <a href='#'class="btn btn-primary btn-lg" id="model_pie" data-toggle="modal" data-target="#myModal">All Channels</a>
       </div><!-- /.box-body-->
       </div>
@@ -244,8 +242,9 @@
       </div>
       <!-- box-body -->
       <div class="box-body no-padding row-fluid">
-
-
+      <ul ng-repeat="domain in topDomains">
+        <li><a href="#">{{domain.label}}</a></li>
+      </ul>
 
       <div class="span12" style="margin-left:0">
       <div class="span12 bottomBorder grayBorder">

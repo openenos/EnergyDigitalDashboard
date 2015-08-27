@@ -1,6 +1,6 @@
 angular.module('enos.controllers')
 	.controller('SiteSnapshotController', ['$scope', function ($scope) {
-	
+	$scope.topDomains = [ { id: '1', label: "Geothermal Heat Pump"}, {id: '2', label: "Water Heater"}, {id:'3', label: "North, east and west"}];
 	var demand_gauge_chart = {};
 	var max_today_gauge_chart = {};
 	var so_far_today_gauge_chart = {};
@@ -53,7 +53,52 @@ angular.module('enos.controllers')
 	    so_far_today_gauge_chart.formatters = {};
 	    $scope.soFarTodayGaugeChart = so_far_today_gauge_chart;
 	    
-	    
+
+  //  $window.alert($scope.pieChartdetails);
+    //Line Chart
+
+     var linechart = {};
+    linechart.type = "LineChart";
+    linechart.cssStyle = "height:200px; width:300px;";
+    linechart.data = {"cols": [
+        {id: "month", label: "Month", type: "string"},
+        {id: "server-id", label: "Server", type: "number"},
+        {id: "cost-id", label: "Shipping", type: "number"}
+    ], "rows": [
+        {c: [
+            {v: "January"},
+            {v: 12, f: "Ony 12 items"},
+            {v: 4}
+        ]},
+        {c: [
+            {v: "February"},
+            {v: 13},
+            {v: 2}
+        ]},
+        {c: [
+            {v: "March"},
+            {v: 24},
+            {v: 6}
+
+        ]}
+    ]};
+
+    linechart.options = {
+        "title": "Sales per month",
+        "isStacked": "true",
+        "fill": 20,
+        "displayExactValues": true,
+        "vAxis": {
+            "title": "Sales unit", "gridlines": {"count": 6}
+        },
+        "hAxis": {
+            "title": "Date"
+        }
+    };
+
+    linechart.formatters = {};
+
+    $scope.linechart = linechart;
 	    
 	     var pie_chart = {};
 	     pie_chart.type = "PieChart";
@@ -90,6 +135,7 @@ angular.module('enos.controllers')
   "formatters": {}
 }
     
+ 
     
     
     
