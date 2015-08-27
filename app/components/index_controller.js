@@ -159,7 +159,3 @@ angular.module('enos.controllers')
 
    $scope.data_tables();
     }]);
-
-
-
- 
